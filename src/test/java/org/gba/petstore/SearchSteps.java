@@ -58,12 +58,12 @@ public class SearchSteps {
             Response searchResponse = searchResponses.get(Thread.currentThread().getId());
             assertEquals("Received unexpected response from api", HttpStatus.SC_OK, searchResponse.statusCode());
             List<Pet> pets = searchResponse.as(type);
-            long petsWithName = pets.parallelStream().filter(it -> it.getName() != null && it.getName().equals(name)).count();
-            assertEquals(String.format("Number of pets with name %s and status %s is not as expected", name, status),
-                    numPets, petsWithName);
             if (pets.size() > 0) {
                 assertThat(pets).extracting("status").contains(status);
             }
+            long petsWithName = pets.parallelStream().filter(it -> it.getName() != null && it.getName().equals(name)).count();
+            assertEquals(String.format("Number of pets with name %s and status %s is not as expected", name, status),
+                    numPets, petsWithName);
         }
     }
 
