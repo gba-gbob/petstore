@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/pet/findByStatus?status=available"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "pets.json",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}
